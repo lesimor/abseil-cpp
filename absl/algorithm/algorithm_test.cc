@@ -29,9 +29,9 @@ TEST(EqualTest, DefaultComparisonRandomAccess) {
   std::vector<int> v3 = {1, 2};
   std::vector<int> v4 = {1, 2, 4};
 
-  EXPECT_TRUE(absl::equal(v1.begin(), v1.end(), v2.begin(), v2.end()));
-  EXPECT_FALSE(absl::equal(v1.begin(), v1.end(), v3.begin(), v3.end()));
-  EXPECT_FALSE(absl::equal(v1.begin(), v1.end(), v4.begin(), v4.end()));
+  EXPECT_TRUE(absl::equal(v1.begin(), v1.end(), v2.begin(), v2.end()));  // 같은 vector 객체를 바라보고 있음.
+  EXPECT_FALSE(absl::equal(v1.begin(), v1.end(), v3.begin(), v3.end()));  // v1이 v3를 포함하지만 갯수가 다름
+  EXPECT_FALSE(absl::equal(v1.begin(), v1.end(), v4.begin(  ), v4.end()));  // v1과 v4는 갯수는 같지만 구성요소가 다름.
 }
 
 TEST(EqualTest, DefaultComparison) {

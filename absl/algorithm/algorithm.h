@@ -31,13 +31,14 @@ namespace absl {
 namespace algorithm_internal {
 
 // Performs comparisons with operator==, similar to C++14's `std::equal_to<>`.
-struct EqualTo {
+struct EqualTo { // TODO: 이건 왜 있는건가?
   template <typename T, typename U>
   bool operator()(const T& a, const U& b) const {
     return a == b;
   }
 };
 
+////////////////////////////////////// EqualImpl //////////////////////////////////////
 template <typename InputIter1, typename InputIter2, typename Pred>
 bool EqualImpl(InputIter1 first1, InputIter1 last1, InputIter2 first2,
                InputIter2 last2, Pred pred, std::input_iterator_tag,
@@ -70,6 +71,7 @@ bool EqualImpl(InputIter1 first1, InputIter1 last1, InputIter2 first2,
   return (last1 - first1 == last2 - first2) &&
          std::equal(first1, last1, first2);
 }
+//////////////////////////////////////////////////////////////////////////////////////
 
 template <typename It>
 It RotateImpl(It first, It middle, It last, std::true_type) {
